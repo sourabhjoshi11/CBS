@@ -1,3 +1,5 @@
+import os
+
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 from app.database import get_db
@@ -6,9 +8,9 @@ import hashlib
 import secrets
 
 router = APIRouter()
-
-ADMIN_USERNAME = "saloni"
-ADMIN_PASSWORD_HASH = hashlib.sha256("saloni@admin123".encode()).hexdigest()
+password=os.getenv("password")
+ADMIN_USERNAME = os.getenv("ADMIN_USERNAME")
+ADMIN_PASSWORD_HASH = hashlib.sha256(password.encode()).hexdigest()
 active_tokens = set()
 
 
