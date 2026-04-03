@@ -106,8 +106,7 @@ npm run dev
 ## 🔐 Admin Access
 
 - **URL:** http://localhost:5173/admin
-- **Username:** `saloni`
-- **Password:** `saloni@admin123`
+- **Username/Password:** set via backend `.env` using `ADMIN_USERNAME` and `ADMIN_PASSWORD`
 
 ---
 
@@ -164,17 +163,19 @@ Made with 💖 for **Creations by Saloni**
 ## Deployment Notes
 
 ### Frontend env
-Create `frontend/.env` from `frontend/.env.example`:
+Use `frontend/.env`:
 
 ```bash
 VITE_API_URL=https://your-backend-domain
 ```
 
 ### Backend env
-Create `backend/.env` from `backend/.env.example`:
+Use `backend/.env`:
 
 ```bash
 CORS_ORIGINS=https://your-frontend-domain,http://localhost:5173
+ADMIN_USERNAME=your_admin_username
+ADMIN_PASSWORD=your_admin_password
 ```
 
 ### Deploy checklist

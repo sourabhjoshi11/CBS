@@ -8,14 +8,21 @@ import hashlib
 import secrets
 
 router = APIRouter()
-password=os.getenv("password")
-ADMIN_USERNAME = os.getenv("ADMIN_USERNAME")
-ADMIN_PASSWORD_HASH = hashlib.sha256(password.encode()).hexdigest()
 active_tokens = set()
 
 
 def hash_password(password: str) -> str:
     return hashlib.sha256(password.encode()).hexdigest()
+
+def get_admin_credentials() -> tuple[str, str]:
+    username = os.getenv("ADMIN_USERNAME")
+    password = os.getenv("ADMIN_PASSWORD")
+    if not username or not password:
+        raise HTTPException(
+            status_code=500,
+            detail="Admin credentials are not configured on server.",
+        )
+    return username, hash_password(password)
 
 
 def verify_token(token: str) -> bool:
@@ -24,8 +31,9 @@ def verify_token(token: str) -> bool:
 
 @router.post("/login", response_model=schemas.Token)
 def admin_login(credentials: schemas.AdminLogin):
-    if (credentials.username == ADMIN_USERNAME and
-            hash_password(credentials.password) == ADMIN_PASSWORD_HASH):
+    admin_username, admin_password_hash = get_admin_credentials()
+    if (credentials.username == admin_username and
+            hash_password(credentials.password) == admin_password_hash):
         token = secrets.token_hex(32)
         active_tokens.add(token)
         return {"access_token": token, "token_type": "bearer"}
