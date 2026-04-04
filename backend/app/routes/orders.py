@@ -1,6 +1,6 @@
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, Depends, HTTPException, BackgroundTasks
 from sqlalchemy.orm import Session
-from app.database import get_db
+from app.database import get_db, SessionLocal
 from app import models, schemas
 from app.notifications import notify_new_order
 from typing import List
@@ -8,8 +8,33 @@ from typing import List
 router = APIRouter()
 
 
+def _notify_and_log(order_id: int) -> None:
+    db = SessionLocal()
+    try:
+        order = db.query(models.Order).filter(models.Order.id == order_id).first()
+        if not order:
+            return
+        notification_result = notify_new_order(order)
+        db.add(
+            models.OrderActivity(
+                order_id=order.id,
+                action="notification",
+                note=f"Email: {notification_result.get('email')} | WhatsApp: {notification_result.get('whatsapp')}",
+                old_status=None,
+                new_status=order.status,
+            )
+        )
+        db.commit()
+    finally:
+        db.close()
+
+
 @router.post("/", response_model=schemas.OrderResponse, status_code=201)
-def create_order(order: schemas.OrderCreate, db: Session = Depends(get_db)):
+def create_order(
+    order: schemas.OrderCreate,
+    background_tasks: BackgroundTasks,
+    db: Session = Depends(get_db),
+):
     db_order = models.Order(**order.dict())
     db.add(db_order)
     db.commit()
@@ -24,18 +49,7 @@ def create_order(order: schemas.OrderCreate, db: Session = Depends(get_db)):
         )
     )
     db.commit()
-
-    notification_result = notify_new_order(db_order)
-    db.add(
-        models.OrderActivity(
-            order_id=db_order.id,
-            action="notification",
-            note=f"Email: {notification_result.get('email')} | WhatsApp: {notification_result.get('whatsapp')}",
-            old_status=None,
-            new_status=db_order.status,
-        )
-    )
-    db.commit()
+    background_tasks.add_task(_notify_and_log, db_order.id)
     return db_order
 
 
