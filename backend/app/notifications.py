@@ -4,6 +4,7 @@ from email.message import EmailMessage
 from typing import Dict
 
 import requests
+from app import config
 
 
 def _build_order_message(order) -> str:
@@ -39,8 +40,9 @@ def _send_email(subject: str, body: str) -> None:
     msg["To"] = smtp_to
     msg.set_content(body)
 
-    with smtplib.SMTP(smtp_host, smtp_port, timeout=20) as server:
-        if use_tls:
+    smtp_client = smtplib.SMTP_SSL if smtp_port == 465 else smtplib.SMTP
+    with smtp_client(smtp_host, smtp_port, timeout=20) as server:
+        if use_tls and smtp_port != 465:
             server.starttls()
         server.login(smtp_user, smtp_password)
         server.send_message(msg)
@@ -90,4 +92,3 @@ def notify_new_order(order) -> Dict[str, str]:
             result["whatsapp"] = f"error: {exc}"
 
     return result
-
