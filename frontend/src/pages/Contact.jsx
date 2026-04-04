@@ -1,74 +1,69 @@
-import { useState } from "react";
+import { useState } from 'react';
 import {
   Mail,
-  Phone,
   Instagram,
   MessageCircle,
   MapPin,
   Send,
   CheckCircle,
-} from "lucide-react";
+} from 'lucide-react';
 
 const FAQS = [
   {
-    q: "How do I place a custom order?",
-    a: "Go to the Order page, fill in your details and preferences. Saloni will contact you to confirm within 24 hours!",
+    q: 'How do I place a custom order?',
+    a: 'Go to the Order page, fill in your details and preferences. Saloni will contact you to confirm within 24 hours!',
   },
   {
-    q: "How much advance notice do I need?",
-    a: "For bouquets: 1-2 days. For hampers/boxes: 2-3 days. For room decorations: 3-5 days in advance.",
+    q: 'How much advance notice do I need?',
+    a: 'For bouquets: 1-2 days. For hampers/boxes: 2-3 days. For room decorations: 3-5 days in advance.',
   },
   {
-    q: "Do you deliver outside the city?",
-    a: "Currently delivering locally. For outstation, custom dried flower arrangements and hampers can be shipped.",
+    q: 'Do you deliver outside the city?',
+    a: 'Currently delivering locally. For outstation, custom dried flower arrangements and hampers can be shipped.',
   },
   {
-    q: "Can I see the creation before delivery?",
-    a: "Yes! Saloni sends a preview photo for approval before delivering. Your satisfaction is guaranteed 💖",
+    q: 'Can I see the creation before delivery?',
+    a: 'Yes! Saloni sends a preview photo for approval before delivering. Your satisfaction is guaranteed \u{1F496}',
   },
 ];
 
 export default function Contact() {
-  const [form, setForm] = useState({ name: "", email: "", message: "" });
+  const [form, setForm] = useState({ name: '', email: '', message: '' });
   const [sent, setSent] = useState(false);
   const whatsapp =
-    "https://wa.me/+918770571002?text=Hi%20Saloni!%20I%20have%20a%20query%20🌸";
+    'https://wa.me/+918770571002?text=Hi%20Saloni!%20I%20have%20a%20query%20%F0%9F%8C%B8';
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setSent(true);
-    setForm({ name: "", email: "", message: "" });
+    setForm({ name: '', email: '', message: '' });
   };
 
   return (
     <div className="pt-20">
-      {/* Hero */}
       <section className="bg-gradient-to-br from-rose-50 to-pink-50 py-16 text-center petal-bg">
         <p className="font-accent text-rose-400 text-2xl mb-2">
-          We'd love to hear from you
+          We&apos;d love to hear from you
         </p>
         <h1 className="font-display text-4xl sm:text-5xl font-bold text-rose-900 mb-3">
-          Get in Touch 🌸
+          Get in Touch {'\u{1F338}'}
         </h1>
         <p className="text-gray-500 font-body max-w-md mx-auto">
-          Have questions? Want a custom order? Just want to say hi? Reach out —
-          Saloni responds fast! 💖
+          Have questions? Want a custom order? Just want to say hi? Reach out - Saloni responds fast! {'\u{1F496}'}
         </p>
       </section>
 
       <section className="py-16 petal-bg">
         <div className="max-w-5xl mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
-            {/* Contact Info */}
             <div className="space-y-6">
               <div>
-                <h2 className="section-title mb-2">Let's Connect</h2>
+                <h2 className="section-title mb-2">Let&apos;s Connect</h2>
                 <p className="text-gray-500 font-body">
-                  Choose the way that's most convenient for you.
+                  Choose the way that&apos;s most convenient for you.
                 </p>
               </div>
 
-              {/* WhatsApp — primary */}
               <a
                 href={whatsapp}
                 target="_blank"
@@ -91,7 +86,6 @@ export default function Contact() {
                 </div>
               </a>
 
-              {/* Instagram */}
               <a
                 href="https://instagram.com/creationsby_saloni"
                 target="_blank"
@@ -114,7 +108,6 @@ export default function Contact() {
                 </div>
               </a>
 
-              {/* Email */}
               <a
                 href="mailto:creationbysalonii@gmail.com"
                 className="flex items-start gap-4 p-5 bg-rose-50 border border-rose-200 rounded-2xl hover:bg-rose-100 hover:-translate-y-0.5 transition-all duration-300 group"
@@ -132,7 +125,6 @@ export default function Contact() {
                 </div>
               </a>
 
-              {/* Location */}
               <div className="flex items-center gap-4 p-5 bg-white border border-gray-100 rounded-2xl">
                 <div className="w-12 h-12 bg-rose-100 rounded-2xl flex items-center justify-center">
                   <MapPin size={22} className="text-rose-500" />
@@ -142,26 +134,21 @@ export default function Contact() {
                     Location
                   </p>
                   <p className="text-gray-500 text-sm font-body">
-                    India 🇮🇳 · Delivering with love
+                    India {'\u{1F1EE}\u{1F1F3}'} · Delivering with love
                   </p>
                 </div>
               </div>
             </div>
 
-            {/* Contact Form */}
             <div className="bg-white rounded-3xl p-8 shadow-xl shadow-rose-50">
               {sent ? (
                 <div className="text-center py-10">
-                  <CheckCircle
-                    size={48}
-                    className="text-green-500 mx-auto mb-4"
-                  />
+                  <CheckCircle size={48} className="text-green-500 mx-auto mb-4" />
                   <h3 className="font-display text-2xl font-bold text-rose-900 mb-2">
-                    Message Sent! 🌸
+                    Message Sent! {'\u{1F338}'}
                   </h3>
                   <p className="text-gray-500 font-body">
-                    Thank you for reaching out! Saloni will get back to you
-                    soon.
+                    Thank you for reaching out! Saloni will get back to you soon.
                   </p>
                   <button
                     onClick={() => setSent(false)}
@@ -183,9 +170,7 @@ export default function Contact() {
                         placeholder="Saloni"
                         required
                         value={form.name}
-                        onChange={(e) =>
-                          setForm((f) => ({ ...f, name: e.target.value }))
-                        }
+                        onChange={(e) => setForm((f) => ({ ...f, name: e.target.value }))}
                       />
                     </div>
                     <div>
@@ -195,9 +180,7 @@ export default function Contact() {
                         placeholder="email@example.com or your phone number"
                         required
                         value={form.email}
-                        onChange={(e) =>
-                          setForm((f) => ({ ...f, email: e.target.value }))
-                        }
+                        onChange={(e) => setForm((f) => ({ ...f, email: e.target.value }))}
                       />
                     </div>
                     <div>
@@ -208,9 +191,7 @@ export default function Contact() {
                         placeholder="Hi Saloni! I'd like to know about..."
                         required
                         value={form.message}
-                        onChange={(e) =>
-                          setForm((f) => ({ ...f, message: e.target.value }))
-                        }
+                        onChange={(e) => setForm((f) => ({ ...f, message: e.target.value }))}
                       />
                     </div>
                     <button
@@ -227,7 +208,6 @@ export default function Contact() {
         </div>
       </section>
 
-      {/* FAQs */}
       <section className="py-16 bg-white">
         <div className="max-w-3xl mx-auto px-6">
           <h2 className="section-title text-center mb-10">
@@ -264,4 +244,3 @@ export default function Contact() {
     </div>
   );
 }
-

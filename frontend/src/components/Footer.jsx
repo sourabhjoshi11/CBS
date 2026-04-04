@@ -6,7 +6,6 @@ export default function Footer() {
 
   return (
     <footer className="bg-gradient-to-br from-rose-900 via-rose-800 to-pink-900 text-white">
-      {/* Top wave */}
       <div className="w-full overflow-hidden leading-none">
         <svg viewBox="0 0 1200 60" preserveAspectRatio="none" className="w-full h-10 fill-cream">
           <path d="M0,40 C300,80 900,0 1200,40 L1200,0 L0,0 Z" />
@@ -15,38 +14,33 @@ export default function Footer() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 pb-10 pt-2">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-          {/* Brand */}
           <div className="space-y-4">
             <div className="flex items-center gap-3">
               <div className="w-12 h-12 rounded-full bg-gradient-to-br from-rose-300 to-pink-400 flex items-center justify-center text-2xl shadow-lg">
-                🎀
+                {'\u{1F380}'}
               </div>
               <div>
                 <p className="font-accent text-xl text-rose-200">Creations</p>
                 <p className="font-display text-xs font-bold tracking-[0.2em] uppercase text-white">by Saloni</p>
               </div>
             </div>
-            <p className="font-accent text-rose-300 text-lg italic">Handmade with love ✨</p>
+            <p className="font-accent text-rose-300 text-lg italic">Handmade with love {'\u{2728}'}</p>
             <p className="text-rose-200 text-sm font-body leading-relaxed">
               Every bouquet, hamper & decoration is crafted with love to make your special moments unforgettable.
             </p>
             <div className="flex items-center gap-3 pt-1">
-              <a href="https://instagram.com/creationsby_saloni" target="_blank" rel="noreferrer"
-                className="w-9 h-9 rounded-full bg-rose-700 hover:bg-rose-500 transition-colors flex items-center justify-center">
+              <a href="https://instagram.com/creationsby_saloni" target="_blank" rel="noreferrer" className="w-9 h-9 rounded-full bg-rose-700 hover:bg-rose-500 transition-colors flex items-center justify-center">
                 <Instagram size={16} />
               </a>
-              <a href={whatsapp} target="_blank" rel="noreferrer"
-                className="w-9 h-9 rounded-full bg-green-700 hover:bg-green-600 transition-colors flex items-center justify-center">
+              <a href={whatsapp} target="_blank" rel="noreferrer" className="w-9 h-9 rounded-full bg-green-700 hover:bg-green-600 transition-colors flex items-center justify-center">
                 <MessageCircle size={16} />
               </a>
-              <a href="mailto:creationbysalonii@gmail.com"
-                className="w-9 h-9 rounded-full bg-rose-700 hover:bg-rose-500 transition-colors flex items-center justify-center">
+              <a href="mailto:creationbysalonii@gmail.com" className="w-9 h-9 rounded-full bg-rose-700 hover:bg-rose-500 transition-colors flex items-center justify-center">
                 <Mail size={16} />
               </a>
             </div>
           </div>
 
-          {/* Quick Links */}
           <div>
             <h4 className="font-display text-white font-semibold text-lg mb-4">Quick Links</h4>
             <ul className="space-y-2">
@@ -58,8 +52,7 @@ export default function Footer() {
                 { to: '/contact', label: 'Contact Us' },
               ].map(({ to, label }) => (
                 <li key={to}>
-                  <Link to={to}
-                    className="text-rose-200 hover:text-white transition-colors text-sm font-body flex items-center gap-2 group">
+                  <Link to={to} className="text-rose-200 hover:text-white transition-colors text-sm font-body flex items-center gap-2 group">
                     <span className="w-1.5 h-1.5 rounded-full bg-rose-400 group-hover:bg-rose-200 transition-colors" />
                     {label}
                   </Link>
@@ -68,7 +61,6 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Contact */}
           <div>
             <h4 className="font-display text-white font-semibold text-lg mb-4">Get in Touch</h4>
             <ul className="space-y-3">
@@ -103,16 +95,13 @@ export default function Footer() {
 
         <div className="border-t border-rose-700 mt-10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3">
           <p className="text-rose-300 text-xs font-body">
-            © {new Date().getFullYear()} Creations by Saloni. All rights reserved.
+            {'\u00A9'} {new Date().getFullYear()} Creations by Saloni. All rights reserved.
           </p>
           <p className="text-rose-300 text-xs font-body flex items-center gap-1">
-            Made with <Heart size={12} className="text-rose-400 fill-rose-400" /> and lots of flowers 🌸
+            Made with <Heart size={12} className="text-rose-400 fill-rose-400" /> and lots of flowers {'\u{1F338}'}
           </p>
         </div>
       </div>
     </footer>
   );
 }
-
-
-
