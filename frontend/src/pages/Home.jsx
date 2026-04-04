@@ -1,16 +1,16 @@
-import { useEffect, useState } from 'react';
+﻿import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Sparkles, ArrowRight, Star, Heart, Gift, Flower2, Truck } from 'lucide-react';
 import { getProducts } from '../services/api';
 import ProductCard from '../components/ProductCard';
 
 const OCCASIONS = [
-  { icon: '🎂', label: 'Birthdays' },
-  { icon: '💑', label: 'Anniversaries' },
-  { icon: '💍', label: 'Weddings' },
-  { icon: '🎉', label: 'Festivals' },
-  { icon: '🎁', label: 'Surprises' },
-  { icon: '🌸', label: 'Just Because' },
+  { icon: 'ðŸŽ‚', label: 'Birthdays' },
+  { icon: 'ðŸ’‘', label: 'Anniversaries' },
+  { icon: 'ðŸ’', label: 'Weddings' },
+  { icon: 'ðŸŽ‰', label: 'Festivals' },
+  { icon: 'ðŸŽ', label: 'Surprises' },
+  { icon: 'ðŸŒ¸', label: 'Just Because' },
 ];
 
 const FEATURES = [
@@ -51,10 +51,10 @@ export default function Home() {
 
   return (
     <div className="overflow-x-hidden">
-      {/* ── HERO ── */}
+      {/* â”€â”€ HERO â”€â”€ */}
       <section className="relative min-h-screen flex items-center justify-center petal-bg pt-20 overflow-hidden">
         {/* Floating petals */}
-        {["💐", "🌸", "🌺", "🌹", "✨", "💖"].map((emoji, i) => (
+        {["ðŸ’", "ðŸŒ¸", "ðŸŒº", "ðŸŒ¹", "âœ¨", "ðŸ’–"].map((emoji, i) => (
           <div
             key={i}
             className="absolute text-3xl opacity-20 animate-float pointer-events-none select-none"
@@ -71,16 +71,17 @@ export default function Home() {
         ))}
 
         <div className="max-w-5xl mx-auto px-6 text-center relative z-10">
-          {/* Instagram handle */}
-          <div className="inline-flex flex-wrap items-center justify-center gap-2 bg-white/80 backdrop-blur-sm border border-rose-200 rounded-full px-4 py-2 mb-8 shadow-sm animate-fade-in max-w-full">
-            <span className="w-2 h-2 bg-rose-400 rounded-full animate-pulse" />
-            <span className="text-rose-600 text-sm font-semibold font-body">
-              @creationsby_saloni
-            </span>
-            <span className="hidden sm:inline text-gray-400 text-sm font-body">
-              · Handmade with love ✨
-            </span>
-          </div>
+          <a href="https://www.instagram.com/creationsby_saloni" target="_blank" rel="noopener noreferrer">
+            <div className="inline-flex flex-wrap items-center justify-center gap-2 bg-white/80 backdrop-blur-sm border border-rose-200 rounded-full px-4 py-2 mb-8 shadow-sm animate-fade-in max-w-full">
+              <span className="w-2 h-2 bg-rose-400 rounded-full animate-pulse" />
+              <span className="text-rose-600 text-sm font-semibold font-body">
+                @creationsby_saloni
+              </span>
+              <span className="hidden sm:inline text-gray-400 text-sm font-body">
+                Handmade with love
+              </span>
+            </div>
+          </a>
 
           {/* Cursive tagline */}
           <p
@@ -109,7 +110,7 @@ export default function Home() {
             style={{ animationDelay: "0.8s", animationFillMode: "forwards" }}
           >
             Making every occasion special with handcrafted bouquets,
-            personalised gift hampers & beautiful decorations. 💖
+            personalised gift hampers & beautiful decorations. ðŸ’–
           </p>
 
           <div
@@ -142,7 +143,7 @@ export default function Home() {
               ["500+", "Happy Customers"],
               ["700+", "Orders Delivered"],
               ["100%", "Handmade"],
-              ["5★", "Average Rating"],
+              ["5â˜…", "Average Rating"],
             ].map(([val, label]) => (
               <div key={label} className="text-center">
                 <p className="font-display text-2xl font-bold text-rose-700">
@@ -168,7 +169,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── OCCASIONS ── */}
+      {/* â”€â”€ OCCASIONS â”€â”€ */}
       <section className="py-16 bg-white">
         <div className="max-w-5xl mx-auto px-6 text-center">
           <p className="font-accent text-rose-400 text-2xl mb-2 animate-on-scroll">
@@ -195,7 +196,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── FEATURED PRODUCTS ── */}
+      {/* â”€â”€ FEATURED PRODUCTS â”€â”€ */}
       <section className="py-20 petal-bg">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-12">
@@ -245,7 +246,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── WHY CHOOSE US ── */}
+      {/* â”€â”€ WHY CHOOSE US â”€â”€ */}
       <section className="py-20 bg-white">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center mb-12">
@@ -253,7 +254,7 @@ export default function Home() {
               Why us?
             </p>
             <h2 className="section-title animate-on-scroll">
-              The Saloni Promise 🌸
+              The Saloni Promise ðŸŒ¸
             </h2>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -277,7 +278,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── TESTIMONIALS ── */}
+      {/* â”€â”€ TESTIMONIALS â”€â”€ */}
       <section className="py-20 bg-gradient-to-br from-rose-900 to-pink-900 text-white">
         <div className="max-w-5xl mx-auto px-6">
           <div className="text-center mb-12">
@@ -285,7 +286,7 @@ export default function Home() {
               What they say
             </p>
             <h2 className="font-display text-3xl md:text-4xl font-bold text-white">
-              Happy Customers 💕
+              Happy Customers ðŸ’•
             </h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -325,7 +326,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── CTA BANNER ── */}
+      {/* â”€â”€ CTA BANNER â”€â”€ */}
       <section className="py-20 petal-bg">
         <div className="max-w-3xl mx-auto px-6 text-center">
           <p className="font-accent text-rose-400 text-3xl mb-3 animate-on-scroll">
@@ -335,8 +336,8 @@ export default function Home() {
             Place Your Custom Order Today
           </h2>
           <p className="text-gray-500 font-body mb-8 animate-on-scroll">
-            Tell us your occasion, budget & ideas — Saloni will craft something
-            magical just for you. 🌸
+            Tell us your occasion, budget & ideas â€” Saloni will craft something
+            magical just for you. ðŸŒ¸
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center animate-on-scroll">
             <Link
@@ -347,12 +348,12 @@ export default function Home() {
               Order Now
             </Link>
             <a
-              href="https://wa.me/+918770571002?text=Hi%20Saloni!%20I%20want%20to%20place%20a%20custom%20order%20🌸"
+              href="https://wa.me/+918770571002?text=Hi%20Saloni!%20I%20want%20to%20place%20a%20custom%20order%20ðŸŒ¸"
               target="_blank"
               rel="noreferrer"
               className="inline-flex items-center gap-2 justify-center bg-green-500 text-white px-8 py-3 rounded-full font-semibold hover:bg-green-600 transition-all duration-300 hover:-translate-y-0.5"
             >
-              💬 WhatsApp Us
+              ðŸ’¬ WhatsApp Us
             </a>
           </div>
         </div>
